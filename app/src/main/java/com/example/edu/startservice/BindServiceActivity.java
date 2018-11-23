@@ -1,11 +1,14 @@
 package com.example.edu.startservice;
 
+import android.app.Notification;
+import android.app.PendingIntent;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -100,5 +103,18 @@ public class BindServiceActivity extends AppCompatActivity implements View.OnCli
         Log.d("activity", "onPause");
         super.onPause();
         doUnBindService();
+
+        if (myServiceBinder != null) {
+
+        } else {
+            NotificationCompat.Builder builder = new NotificationCompat.Builder (this);
+            builder.setSmallIcon (R.drawable.musicplay);
+            builder.setContentTitle("My Music Play, Click Me!");
+            builder.setContentText("Hi, This is My Music Play");
+            Intent notificationIntent = new Intent(this, BindServiceActivity.class);
+
+//            PendingIntent contentIntent = Pending
+
+        }
     }
 }
